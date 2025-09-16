@@ -1,0 +1,173 @@
+<header class="header">
+  <div class="nav-container">
+    <div class="logo">
+      <img src="logo.svg" alt="Bajaj Finserv" class="logo-img" />
+    </div>
+    <button
+      class="menu-toggle"
+      aria-label="Menu"
+      type="button"
+      (click)="toggleMenu()"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+  <div class="company-subtitle">BAJAJ TECHNOLOGY SERVICES</div>
+</header>
+
+<!-- Main container for the mobile card -->
+<main class="page">
+  <section class="score-card" role="region" aria-labelledby="overallScoreTitle">
+    <h2 id="overallScoreTitle" class="score-heading">Your Overall Score</h2>
+
+    <div class="card">
+      <div class="score-visual">
+        <!-- radial now uses a bound background computed in the component -->
+        <div
+          class="radial"
+          [ngClass]="{ 'at-risk': stageLabel === 'At Risk Stage' }"
+          aria-hidden="true"
+          [ngStyle]="{ background: radialBackground }"
+          [attr.data-percent]="percentage"
+        >
+          <div class="radial-inner">
+            <div class="score-display">{{ percentage }}%</div>
+          </div>
+        </div>
+
+        <!-- <div class="status">
+          <span
+            class="status-badge"
+            [ngClass]="{
+              fail: statusLabel === 'FAIL',
+              pass: statusLabel === 'PASS'
+            }"
+            aria-live="polite"
+          >
+            {{ statusLabel }}
+          </span>
+        </div> -->
+      </div>
+
+      <div class="card-body">
+        <h3 class="card-title">
+          BFSI Success Assessment
+          <span class="muted">{{ stageLabel }}</span>
+        </h3>
+        <p class="card-desc">{{ stageMessage }}</p>
+
+        <div class="pills" aria-hidden="false">
+          <span class="pill" *ngFor="let p of pills" [ngClass]="p.class">{{
+            p.text
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Contact CTA — place this directly below your current implementation -->
+<section class="contact-cta" aria-labelledby="contactCtaTitle">
+  <div class="contact-inner">
+    <h3 id="contactCtaTitle" class="contact-title">
+      Get in Touch with our Experts
+    </h3>
+    <p class="contact-desc">
+      For optimization of your Salesforce, connect with our experts and discover
+      how you can improve efficiency, streamline workflows, and maximize ROI
+    </p>
+  </div>
+</section>
+<footer class="footer" role="contentinfo" aria-label="Footer">
+  <div class="footer-sections">
+    <div class="footer-col">
+      <h4>Our Practices</h4>
+      <ul>
+        <li>Experience</li>
+        <li>Commerce</li>
+        <li>Engineering</li>
+        <li>CRM</li>
+        <li>Data &amp; AI</li>
+        <li>Cloud</li>
+        <li>Digital Agency</li>
+        <li>Emerging Tech</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Domain Expertise</h4>
+      <ul>
+        <li>Financial Services</li>
+        <li>Insurance</li>
+        <li>E-commerce</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li>Home</li>
+        <li>About Us</li>
+        <li>Success Stories</li>
+        <li>Blogs</li>
+        <li>Our People</li>
+        <li>Contact Us</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li>Terms and Conditions</li>
+        <li>Privacy Policy</li>
+        <li>Investor Relations</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Office Locations -->
+  <div class="locations">
+    <div class="locations-inner">
+      <h4>India</h4>
+      <p>
+        <strong>Pune - Head Office</strong><br />4th floor, B2, Cerebrum IT
+        Park, Kalyani Nagar, Pune, Maharashtra - 411014
+      </p>
+
+      <p>
+        <strong>Pune - Global Delivery Hub</strong><br />6th floor, B1, Cerebrum
+        IT Park, Kalyani Nagar, Pune, Maharashtra - 411014
+      </p>
+
+      <p>
+        <strong>Mumbai</strong><br />Bajaj Finserv Ltd, 19th Floor, Capitol,
+        Bandra Kurla Complex, Mumbai, Maharashtra - 400051
+      </p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact">
+    <p>
+      Email:
+      <a href="mailto:info@bajajtechnologyservices.com"
+        >info@bajajtechnologyservices.com</a
+      >
+    </p>
+    <p>Ph. No.: 020-716342000 (Mon to Sat - 10 am to 7 pm IST)</p>
+  </div>
+
+  <!-- Footer Legal -->
+  <div class="legal">
+    <p>
+      Bajaj Finserv Direct Limited Registered Office:<br />
+      Bajaj Auto Limited Complex, Mumbai – Pune Road, Akurdi, Pune – 411 035
+      CIN: U65923PN2014PLC150522<br />
+      Corporate Agency (Composite) Registration no.CA0551 (valid till
+      10–Apr–2027) Investment Adviser, SEBI registration: INA000016083 (Validity
+      – Aug 11, 2021 – Perpetual)
+    </p>
+  </div>
+</footer>

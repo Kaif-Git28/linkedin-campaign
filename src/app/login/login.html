@@ -1,0 +1,140 @@
+<div class="bajaj-tech-services">
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-menu">
+      <img src="logo.svg" alt="Bajaj Logo" class="logo" />
+      <button class="menu-btn">
+        <span class="menu-icon"></span>
+      </button>
+    </div>
+    <h2 class="title">BAJAJ TECHNOLOGY SERVICES</h2>
+  </header>
+
+  <!-- Form Section -->
+  <section class="form-section">
+    <h3 class="form-title">Please provide the details below</h3>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+      <label for="name">Name <span class="required">*</span></label>
+      <input 
+        type="text" 
+        id="name" 
+        name="name"
+        placeholder="Enter your name" 
+        [(ngModel)]="formData.name"
+        #nameField="ngModel"
+        required
+        minlength="2"
+        [class.error]="nameField.invalid && nameField.touched"
+      />
+      <div class="error-message" *ngIf="nameField.invalid && nameField.touched">
+        <span *ngIf="nameField.errors?.['required']">Name is required</span>
+        <span *ngIf="nameField.errors?.['minlength']">Name must be at least 2 characters</span>
+      </div>
+
+      <label for="email">Email <span class="required">*</span></label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email"
+        placeholder="Enter your email" 
+        [(ngModel)]="formData.email"
+        #emailField="ngModel"
+        required
+        email
+        [class.error]="emailField.invalid && emailField.touched"
+      />
+      <div class="error-message" *ngIf="emailField.invalid && emailField.touched">
+        <span *ngIf="emailField.errors?.['required']">Email is required</span>
+        <span *ngIf="emailField.errors?.['email']">Please enter a valid email address</span>
+      </div>
+
+      <div class="checkbox">
+        <input type="checkbox" id="policy" name="policy" [(ngModel)]="formData.acceptPolicy" />
+        <label for="policy">
+          I would like to learn more about Adobe services offered by Bajaj Technology Services. 
+          I have read and agree to the 
+          <a href="#">Privacy Policy</a>, and consent to the processing of my personal data provided above.
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">Submit</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-sections">
+      <div>
+        <h4>Our Practices</h4>
+        <ul>
+          <li>Experience</li>
+          <li>Commerce</li>
+          <li>Engineering</li>
+          <li>CRM</li>
+          <li>Data & AI</li>
+          <li>Cloud</li>
+          <li>Digital Agency</li>
+          <li>Emerging Tech</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Domain Expertise</h4>
+        <ul>
+          <li>Financial Services</li>
+          <li>Insurance</li>
+          <li>E-commerce</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Success Stories</li>
+          <li>Blogs</li>
+          <li>Our People</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li>Terms and Conditions</li>
+          <li>Privacy Policy</li>
+          <li>Investor Relations</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Office Locations -->
+    <div class="locations">
+      <div>
+        <h4>India</h4>
+        <p><b>Pune - Head Office</b><br/>4th floor, B2, Cerebrum IT Park, Kalyani Nagar, Pune, Maharashtra - 411014</p>
+
+        <p><b>Pune - Global Delivery Hub</b><br/>6th floor, B1, Cerebrum IT Park, Kalyani Nagar, Pune, Maharashtra - 411014</p>
+
+        <p><b>Mumbai</b><br/>Bajaj Finserv Ltd, 19th Floor, Capitol, Bandra Kurla Complex, Mumbai, Maharashtra - 400051</p>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact">
+      <p>Email: <a href="mailto:info@bajajtechnologyservices.com">info@bajajtechnologyservices.com</a></p>
+      <p>Ph. No.: 020-716342000 (Mon to Sat - 10 am to 7 pm IST)</p>
+    </div>
+
+    <!-- Footer Legal -->
+    <div class="legal">
+      <p>
+        Bajaj Finserv Direct Limited Registered Office:<br/>
+        Bajaj Auto Limited Complex, Mumbai – Pune Road, Akurdi, Pune – 411 035 CIN: U65923PN2014PLC150522<br/>
+        Corporate Agency (Composite) Registration no.CA0551 (valid till 10–Apr–2027) Investment Adviser, SEBI registration: INA000016083 (Validity – Aug 11, 2021 – Perpetual)
+      </p>
+    </div>
+  </footer>
+</div>
