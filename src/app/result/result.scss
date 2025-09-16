@@ -14,11 +14,9 @@ $pill-success-text: #2a7a2a;
 /* Header styles (from your example, extended slightly) */
 .header {
   padding: 1rem 1.25rem;
-  background: linear-gradient(
-    180deg,
-    $bg-gradient-start 0%,
-    $bg-gradient-end 100%
-  );
+  background: linear-gradient(180deg,
+      $bg-gradient-start 0%,
+      $bg-gradient-end 100%);
   color: #ffffff;
 
   .nav-container {
@@ -78,7 +76,9 @@ $pill-success-text: #2a7a2a;
 /* Score card */
 .score-card {
   width: 100%;
-  max-width: 380px; /* mobile width similar to screenshot */
+  max-width: 380px;
+
+  /* mobile width similar to screenshot */
   .score-heading {
     font-size: 1rem;
     font-weight: 600;
@@ -179,7 +179,8 @@ $pill-success-text: #2a7a2a;
       margin: 0;
       font-size: 1rem;
       font-weight: 700;
-      color: $accent-green; /* default green for title */
+      color: $accent-green;
+      /* default green for title */
       line-height: 1.1;
       transition: color 0.3s ease;
 
@@ -191,15 +192,12 @@ $pill-success-text: #2a7a2a;
       .muted {
         display: block;
         font-weight: 700;
-        color: $accent-green; /* default green for stage label */
+        color: $accent-green;
+        /* default green for stage label */
         font-size: 0.95rem;
         margin-top: 6px;
         transition: color 0.3s ease;
 
-        // Red color for At Risk stage
-        &.at-risk {
-          color: $accent-red;
-        }
       }
     }
 
@@ -301,11 +299,9 @@ $pill-success-text: #2a7a2a;
     height: 44px;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(
-      180deg,
-      #ff6900 0%,
-      #f84b00 100%
-    ); // vivid orange
+    background: linear-gradient(180deg,
+        #ff6900 0%,
+        #f84b00 100%); // vivid orange
     color: #ffffff;
     font-weight: 700;
     font-size: 0.95rem;

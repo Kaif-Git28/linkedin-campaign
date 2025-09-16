@@ -53,8 +53,8 @@
 
       <div class="card-body">
         <h3 class="card-title">
-          BFSI Success Assessment
-          <span class="muted">{{ stageLabel }}</span>
+          SFDC Success Assessment
+          <span class="muted" [ngClass]="getStageLabelColorClass()">{{ stageLabel }}</span>
         </h3>
         <p class="card-desc">{{ stageMessage }}</p>
 
@@ -72,7 +72,7 @@
 <section class="contact-cta" aria-labelledby="contactCtaTitle">
   <div class="contact-inner">
     <h3 id="contactCtaTitle" class="contact-title">
-      Get in Touch with our Experts
+      Our experts will get in touch with you!
     </h3>
     <p class="contact-desc">
       For optimization of your Salesforce, connect with our experts and discover

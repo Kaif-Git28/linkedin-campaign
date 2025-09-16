@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule], 
 })
-export class Result implements OnInit {
+export class Result implements OnInit, AfterViewInit {
   // values coming from navigation state (Home component)
   totalScore: number = 0;
   maxScore: number = 42; // 7 questions * 6 points
@@ -47,6 +47,22 @@ export class Result implements OnInit {
 
     // compute radial background (conic-gradient string)
     this.radialBackground = this.makeRadialBackground(this.percentage);
+  }
+
+  ngAfterViewInit(): void {
+    // Force scroll to top after view is initialized
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, 0);
+  }
+
+  // Method to get dynamic CSS class based on stage
+  getTitleColorClass(): string {
+    return this.stageLabel === 'At Risk Stage' ? 'at-risk' : '';
+  }
+
+  getStageLabelColorClass(): string {
+    return this.stageLabel === 'At Risk Stage' ? 'at-risk' : '';
   }
 
   private mapStageLabel(score: number): string {
