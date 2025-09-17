@@ -3,12 +3,7 @@
     <div class="logo">
       <img src="logo.svg" alt="Bajaj Finserv" class="logo-img" />
     </div>
-    <button
-      class="menu-toggle"
-      aria-label="Menu"
-      type="button"
-      (click)="toggleMenu()"
-    >
+    <button class="menu-toggle" aria-label="Menu" type="button" (click)="toggleMenu()">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
@@ -17,17 +12,16 @@
   <div class="company-subtitle">BAJAJ TECHNOLOGY SERVICES</div>
 </header>
 
-<!-- Main container for the mobile card -->
 <main class="page">
   <section class="score-card" role="region" aria-labelledby="overallScoreTitle">
     <h2 id="overallScoreTitle" class="score-heading">Your Overall Score</h2>
 
     <div class="card">
+      <!-- visual -->
       <div class="score-visual">
-        <!-- radial now uses a bound background computed in the component -->
         <div
           class="radial"
-          [ngClass]="{ 'at-risk': stageLabel === 'At Risk Stage' }"
+          [ngClass]="{ 'at-risk': stageLabel === 'At Risk' }"
           aria-hidden="true"
           [ngStyle]="{ background: radialBackground }"
           [attr.data-percent]="percentage"
@@ -37,49 +31,104 @@
           </div>
         </div>
 
-        <!-- <div class="status">
-          <span
-            class="status-badge"
+        <div class="status">
+          <span class="status-badge"
             [ngClass]="{
-              fail: statusLabel === 'FAIL',
-              pass: statusLabel === 'PASS'
+              'fail': getStageStatus() === 'FAIL',
+              'needs-improvement': getStageStatus() === 'Needs Improvement',
+              'pass': getStageStatus() === 'PASS',
+              'pass-excellence': getStageStatus() === 'PASS WITH EXCELLENCE'
             }"
             aria-live="polite"
           >
-            {{ statusLabel }}
+            {{ getStageStatus() }}
           </span>
-        </div> -->
+        </div>
       </div>
 
-      <div class="card-body">
+      <!-- central body -->
+      <div class="card-body" [ngClass]="{ 'at-risk': stageLabel === 'At Risk' }">
         <h3 class="card-title">
           SFDC Success Assessment
           <span class="muted" [ngClass]="getStageLabelColorClass()">{{ stageLabel }}</span>
         </h3>
+
         <p class="card-desc">{{ stageMessage }}</p>
 
         <div class="pills" aria-hidden="false">
-          <span class="pill" *ngFor="let p of pills" [ngClass]="p.class">{{
-            p.text
-          }}</span>
+          <span class="pill" *ngFor="let p of pills" [ngClass]="p.class">{{ p.text }}</span>
         </div>
+      </div>
+
+      <!-- right-hand detailed message column (structured) -->
+      <div class="message-column"
+           [ngClass]="{
+             'at-risk': stageLabel === 'At Risk',
+             'needs-improvement': getStageStatus() === 'Needs Improvement',
+             'excellence': getStageStatus() === 'PASS WITH EXCELLENCE'
+           }"
+           aria-label="Recommended actions">
+
+        <!-- small table-like header -->
+        <div class="message-meta">
+          <div class="meta-row">
+            <div class="meta-label">Status</div>
+            <div class="meta-value">
+              <span
+                class="meta-badge"
+                [ngClass]="{
+                  'meta-fail': getStageStatus() === 'FAIL',
+                  'meta-needs': getStageStatus() === 'Needs Improvement',
+                  'meta-pass': getStageStatus() === 'PASS',
+                  'meta-exc': getStageStatus() === 'PASS WITH EXCELLENCE'
+                }"
+              >
+                {{ getStageStatus() }}
+              </span>
+            </div>
+          </div>
+
+          <div class="meta-row">
+            <div class="meta-label">Points</div>
+            <div class="meta-value">{{ getStagePoints() }}</div>
+          </div>
+
+          <div class="meta-row">
+            <div class="meta-label">Stage</div>
+            <div class="meta-value">{{ getStageStage() }}</div>
+          </div>
+        </div>
+
+        <hr class="meta-sep" />
+
+        <!-- Render parsed message sections -->
+        <div class="message-body">
+          <ng-container *ngFor="let s of parsedSections">
+            <p class="msg-paragraph" *ngIf="s.kind === 'paragraph'">{{ s['text'] }}</p>
+
+            <div class="msg-heading" *ngIf="s.kind === 'heading'">{{ s['text'] }}</div>
+
+            <ul class="msg-list" *ngIf="s.kind === 'list'">
+              <li *ngFor="let it of s['items']">{{ it }}</li>
+            </ul>
+          </ng-container>
+        </div>
+
+        
       </div>
     </div>
   </section>
 </main>
 
-<!-- Contact CTA — place this directly below your current implementation -->
+
 <section class="contact-cta" aria-labelledby="contactCtaTitle">
   <div class="contact-inner">
     <h3 id="contactCtaTitle" class="contact-title">
       Our experts will get in touch with you!
     </h3>
-    <p class="contact-desc">
-      For optimization of your Salesforce, connect with our experts and discover
-      how you can improve efficiency, streamline workflows, and maximize ROI
-    </p>
   </div>
 </section>
+
 <footer class="footer" role="contentinfo" aria-label="Footer">
   <div class="footer-sections">
     <div class="footer-col">
@@ -127,7 +176,6 @@
     </div>
   </div>
 
-  <!-- Office Locations -->
   <div class="locations">
     <div class="locations-inner">
       <h4>India</h4>
@@ -148,7 +196,6 @@
     </div>
   </div>
 
-  <!-- Contact -->
   <div class="contact">
     <p>
       Email:
@@ -159,7 +206,6 @@
     <p>Ph. No.: 020-716342000 (Mon to Sat - 10 am to 7 pm IST)</p>
   </div>
 
-  <!-- Footer Legal -->
   <div class="legal">
     <p>
       Bajaj Finserv Direct Limited Registered Office:<br />
