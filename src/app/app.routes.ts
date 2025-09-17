@@ -4,8 +4,8 @@ import { Result } from './result/result';
 import { Home } from './home/home';
 
 export const routes: Routes = [
-    { path: '', component: Login },
-    { path: 'home', component: Home },
+    // { path: '', component: Login },
+    { path: '', component: Home },
     { path: 'results', component: Result },
 
 ];
